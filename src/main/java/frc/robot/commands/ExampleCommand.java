@@ -10,14 +10,15 @@ import edu.wpi.first.wpilibj2.command.Command;
 /** An example command that uses an example subsystem. */
 public class ExampleCommand extends Command {
   private final ExampleSubsystem exampleSubsystem;
-
+  private final double ouutput;
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ExampleCommand(ExampleSubsystem exampleSubsystem) {
+  public ExampleCommand(ExampleSubsystem exampleSubsystem, double ouutput) {
     this.exampleSubsystem = exampleSubsystem;
+    this.ouutput = ouutput;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(exampleSubsystem);
   }
@@ -28,11 +29,14 @@ public class ExampleCommand extends Command {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    exampleSubsystem.motorOutput(ouutput);
+  }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+  }
 
   // Returns true when the command should end.
   @Override
